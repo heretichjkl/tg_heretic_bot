@@ -1,0 +1,19 @@
+#
+#   Example configuration file.
+# Make a copy of it without ".example" suffix and put it under
+# "heretic" directory.
+#
+
+TG_API_ID = 0 # Integer
+TG_API_HASH = '' # String
+TG_API_BOT = None # Screw it
+
+CMD_PREFIX = 'hrt>'
+
+# Hell with this
+#OWNER = ''
+#ALLOW_THYSELF = True
+#ALLOW_CONTACTS = True
+
+STORAGE_PATH = './storage'
+DB_PATH = STORAGE_PATH + '/heresy.db'

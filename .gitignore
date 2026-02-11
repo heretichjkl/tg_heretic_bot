@@ -1,0 +1,3 @@
+/storage/*
+*.session
+__pycache__
