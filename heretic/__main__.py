@@ -12,6 +12,7 @@ import utils.call
 from cmd import *
 from structs import *
 import config
+from config import STORAGE_PATH
 
 _cmd_prefix = config.CMD_PREFIX
 
@@ -36,22 +37,6 @@ async def init_ev_hndl(Heretic: THeretic):
         else:
             await log_reply('Unauthorized', event)
 
-#async def get_contacts(Heretic: THeretic):
-#    return await client(
-#        functions.contacts.GetContactsRequest(hash=config.TG_API_ID))
-#
-#async def init_users(Heretic: THeretic):
-#    if config.ALLOW_THYSELF:
-#        log("ALLOW_THYSELF")
-#        me = await client.get_me()
-#        Heretic.users.append(me)
-#
-#    if config.ALLOW_CONTACTS and not IS_BOT:
-#        log("ALLOW_CONTACTS")
-#        contacts = await get_contacts(Heretic)
-#        for c in contacts.users:
-#            Heretic.users.append(c)
-
 async def init_main() -> THeretic:
     Heretic = THeretic()
 
@@ -61,11 +46,13 @@ async def init_main() -> THeretic:
     return Heretic
 
 async def init() -> THeretic:
+    if not os.path.isdir(STORAGE_PATH):
+        os.mkdir(STORAGE_PATH)
+
     Heretic = await init_main()
     log("STARTED")
 
     await init_db()
-    #await init_users(Heretic)
     await init_ev_hndl(Heretic)
 
     return Heretic

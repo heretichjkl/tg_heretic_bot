@@ -1,3 +1,4 @@
-/storage/*
-*.session
+/storage
+/heretic/config.py
+*.session*
 __pycache__
